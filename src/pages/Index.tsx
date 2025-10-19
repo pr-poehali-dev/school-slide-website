@@ -50,11 +50,11 @@ const slides = [
 ];
 
 const buttonImages = [
-  { url: 'https://cdn.poehali.dev/files/763d4271-e016-4184-be09-14cc1b7978fc.jpg', slideIndex: 0 },
-  { url: 'https://cdn.poehali.dev/files/2d4937c6-755f-4f58-9fc6-4647dcd25dd3.jpg', slideIndex: 1 },
-  { url: 'https://cdn.poehali.dev/files/b25dec7e-896d-4a47-b016-c7cf8ba2a46d.jpg', slideIndex: 2 },
-  { url: 'https://cdn.poehali.dev/files/055f6a44-c47a-4cda-b8d0-f1fa7cc24aa8.jpg', slideIndex: 3 },
-  { url: 'https://cdn.poehali.dev/files/892b9c99-7125-4f60-8393-34ac7764b08c.jpg', slideIndex: 4 }
+  { url: 'https://cdn.poehali.dev/files/763d4271-e016-4184-be09-14cc1b7978fc.jpg', slideIndex: 0, label: 'ИИ' },
+  { url: 'https://cdn.poehali.dev/files/2d4937c6-755f-4f58-9fc6-4647dcd25dd3.jpg', slideIndex: 1, label: 'Квантовые компьютеры' },
+  { url: 'https://cdn.poehali.dev/files/b25dec7e-896d-4a47-b016-c7cf8ba2a46d.jpg', slideIndex: 2, label: 'Нейроинтерфейсы' },
+  { url: 'https://cdn.poehali.dev/files/055f6a44-c47a-4cda-b8d0-f1fa7cc24aa8.jpg', slideIndex: 3, label: 'Космос' },
+  { url: 'https://cdn.poehali.dev/files/892b9c99-7125-4f60-8393-34ac7764b08c.jpg', slideIndex: 4, label: 'Умные города' }
 ];
 
 const Index = () => {
@@ -80,17 +80,19 @@ const Index = () => {
           <button
             key={idx}
             onClick={() => goToSlide(btn.slideIndex)}
-            className={`transition-all duration-300 hover:scale-110 ${
+            className={`relative transition-all duration-300 hover:scale-110 ${
               currentSlide === btn.slideIndex
                 ? 'ring-4 ring-primary scale-105'
                 : 'opacity-70 hover:opacity-100'
             }`}
           >
-            <img
-              src={btn.url}
-              alt={`Слайд ${idx + 1}`}
-              className="w-16 h-12 object-cover rounded-lg shadow-xl"
-            />
+            <div className="relative w-20 h-14 rounded-lg overflow-hidden shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-sm flex items-center justify-center">
+                <p className="text-white text-xs font-semibold text-center px-2 leading-tight">
+                  {btn.label}
+                </p>
+              </div>
+            </div>
           </button>
         ))}
       </div>
